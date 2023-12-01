@@ -21,19 +21,25 @@
 
 // export default ChatPage
 
-
-import {Box} from "@chakra-ui/layout";
-import {ChatState} from "../context/ChatProvider";
+import { Box, Flex, Spacer } from "@chakra-ui/react";
+import { ChatState } from "../context/ChatProvider";
 import SideDrawer from "../components/miscellaneous/SideDrawer";
-const ChatPage =()=>{
-  const {user} = ChatState();
-  return <div style={{width:"100%"}}>
-      {user && <SideDrawer/>}
-      <Box>
-      {/*{user && <MyChats/>}
-      {user && <ChatBox/>} */}
-      </Box>
-  </div>;
+import MyChats from "../components/MyChats";
+import ChatBox from "../components/ChatBox";
+const ChatPage = () => {
+  const { user } = ChatState();
+  // console.log(user);
+  return (
+    <div style={{ width: "100%" }}>
+      {user && <SideDrawer />}
+      {/* <Flex> */}
+      <Box p="10px"  w="100%"  display="flex" justifyContent="space-between" h="90%">
+        {user && <MyChats />}
+        {user && <ChatBox />}
+        </Box>
+      {/* </Flex> */}
+    </div>
+  );
 };
 
 export default ChatPage;

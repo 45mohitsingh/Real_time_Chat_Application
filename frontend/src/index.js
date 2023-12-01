@@ -7,13 +7,15 @@ import ChatProvider from "./context/ChatProvider";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <ChatProvider>
+  
  <BrowserRouter> 
+ <ChatProvider>
   <ChakraProvider>
     <App />     
   </ChakraProvider>
-  </BrowserRouter>
   </ChatProvider>
+  </BrowserRouter>
+ 
 );
 
 //Challenge. Render all the notes inside notes.js as a seperate Note

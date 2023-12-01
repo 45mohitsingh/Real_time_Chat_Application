@@ -10,7 +10,6 @@ const Homepage = () => {
 
   useEffect(()=>{
     const user = JSON.parse(localStorage.getItem("userInfo"));
-
     if(user) history.push("/chats");
   },[history]);
 
@@ -27,7 +26,7 @@ const Homepage = () => {
     borderWidth="lg"
     >
       <Center>
- <Text fontSize="4xl" fontFamily="work sans" color="black"  >Talk-A Tive</Text>
+ <Text fontSize="4xl" fontFamily="work sans" color="black"  >ZenChat</Text>
  </Center>
     </Box>
    <Box bg='white' w='100%' p={4} borderRadius={'lg'} borderWidth={'1px'}color={'black'}>

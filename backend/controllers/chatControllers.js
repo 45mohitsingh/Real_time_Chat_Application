@@ -59,9 +59,10 @@ const fetchChats= expressAsyncHandler(async(req,res)=>{
         .sort({updatedAt: -1})
         .then(async (results)=>{
             results = await User.populate(results,{
-                path: "latestMessage,sender",
+                path: "latestMessage.sender",
                 select: "name pic email",
             });
+            console.log()
         res.status(200).send(results);
         });
     }catch(error){

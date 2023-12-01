@@ -4,6 +4,7 @@ import { useToast } from '@chakra-ui/react'
 import { warning } from 'framer-motion';
 import axios from 'axios';
 import {useHistory} from "react-router-dom";
+import { ChatState } from '../../context/ChatProvider';
 
 const Login = () => {
 
@@ -18,6 +19,8 @@ const Login = () => {
     function handleClick(){
         setShow(!show)
     };
+    const {setUser} = ChatState();
+    
     const submitHandler=async()=>{
       setLoading(true);
       if(!email || !password ){
@@ -38,6 +41,7 @@ const Login = () => {
            },
        };
        const {data}= await axios.post("/api/user/login",{email,password},config);
+      //  console.log(data,"let see dat");
        toast({
            title: 'Login Succesful',
            // description: "We've created your account for you.",
@@ -45,7 +49,9 @@ const Login = () => {
            duration: 6000, 
            isClosable: true,
          });
-         localStorage.setItem("userinfo",JSON.stringify(data));
+        //  console.log(data,"login page");
+        setUser(data);
+         localStorage.setItem("userInfo",JSON.stringify(data));
          setLoading(false);
          history.push("/chats");
       }catch(error){
@@ -95,7 +101,7 @@ const Login = () => {
      onClick={submitHandler}
      isLoading={loading}
      >Login</Button>
-     <Button
+     {/* <Button
      variant='solid'
      colorScheme='red'
      width='100%'
@@ -103,7 +109,7 @@ const Login = () => {
         setEmail("guest@example.com");
         setPassword("12345678");
      }}
-     >Get Guest User Credentials</Button>
+     >Get Guest User Credentials</Button> */}
     </VStack>
   ) 
   
